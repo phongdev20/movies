@@ -1,4 +1,3 @@
-import React from "react";
 import "./HomePage.css";
 import MovieItem from "../../components/MovieItem/MovieItem";
 import MovieCarousel from "../../components/MovieCarousel/MovieCarousel";
