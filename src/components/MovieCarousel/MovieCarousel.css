@@ -1,0 +1,274 @@
+.movie-carousel {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  height: 60vh;
+  min-height: 500px;
+}
+
+.carousel-container {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.carousel-item.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.movie-slide {
+  width: 100%;
+  height: 100%;
+}
+
+.movie-image {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.movie-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.movie-image:hover img {
+  transform: scale(1.1);
+}
+
+.movie-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.4),
+    transparent
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+}
+
+.movie-content {
+  text-align: left;
+  max-width: 100%;
+  margin: 0;
+}
+
+.movie-title {
+  color: white;
+  font-size: 2rem;
+  margin: 0 0 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.movie-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rating-label {
+  color: #ffd700;
+  font-size: 1.1rem;
+}
+
+.rating-value {
+  color: white;
+  font-size: 1.1rem;
+}
+
+.watch-button-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.watch-button {
+  background: linear-gradient(45deg, #e50914, #ff0f1f);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.watch-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.watch-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(229, 9, 20, 0.4);
+  background: linear-gradient(45deg, #ff0f1f, #e50914);
+}
+
+.watch-button:hover::before {
+  left: 100%;
+}
+
+.watch-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 10px rgba(229, 9, 20, 0.3);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(229, 9, 20, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(229, 9, 20, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(229, 9, 20, 0);
+  }
+}
+
+.watch-button {
+  animation: pulse 2s infinite;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.carousel-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-button.prev {
+  left: 20px;
+}
+
+.carousel-button.next {
+  right: 20px;
+}
+
+@media (max-width: 768px) {
+  .movie-carousel {
+    height: 60vh;
+  }
+
+  .movie-title {
+    font-size: 1.8rem;
+  }
+
+  .movie-overlay {
+    padding: 3rem 1.5rem 1.5rem;
+  }
+
+  .carousel-button {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .carousel-button.prev {
+    left: 10px;
+  }
+
+  .carousel-button.next {
+    right: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .movie-carousel {
+    height: 50vh;
+  }
+
+  .movie-title {
+    font-size: 1.5rem;
+  }
+
+  .movie-overlay {
+    padding: 2rem 1rem 1rem;
+  }
+
+  .rating-label,
+  .rating-value {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 1400px) {
+  .carousel-item {
+    flex: 0 0 calc(20% - 1.2rem);
+  }
+}
+
+@media (max-width: 1200px) {
+  .carousel-item {
+    flex: 0 0 calc(25% - 1.125rem);
+  }
+}
+
+@media (max-width: 992px) {
+  .carousel-item {
+    flex: 0 0 calc(33.333% - 1rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-item {
+    flex: 0 0 100%;
+  }
+}
