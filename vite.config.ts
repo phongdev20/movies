@@ -7,4 +7,8 @@ export default defineConfig({
   build: {
     outDir: "./dist",
   },
+  server: {
+    host: "https://api.themoviedb.org/3",
+    port: 5173,
+  },
 });
